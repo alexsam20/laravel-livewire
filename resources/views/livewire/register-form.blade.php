@@ -38,11 +38,17 @@
             <img class="rounded h-10 mt-5 block" src="{{ $image->temporaryUrl() }}" alt="">
         @endif
 
-        <div wire:loading wire:target="image">
-            <span>Uploading ...</span>
+        <div wire:loading wire:target="create">
+            <span class="text-green-500">Uploading ...</span>
         </div>
 
-        <button type="submit"
+        <div wire:loading.delay.longest>
+            <span class="text-green-500">Sending ...</span>
+        </div>
+
+{{--        <button wire:loading.remove type="submit"--}}
+{{--        <button wire:loading.class.remove="text-white" wire:loading.attr="disabled" type="submit"--}}
+        <button wire:loading.class="bg-blue-500" wire:loading.attr="disabled" type="submit"
             class="block rounded px-4 py-2 bg-teal-500 text-white mt-3 font-semibold hover:bg-teal-600">Create +</button>
     </form>
 </div>
