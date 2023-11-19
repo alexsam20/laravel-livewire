@@ -13,7 +13,7 @@
         <script src="./tailwind.js"></script>
     </head>
     <body class="antialiased">
-    @livewire('clicker')
+    @livewire('register-form')
 
     </body>
 </html>
