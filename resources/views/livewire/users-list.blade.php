@@ -1,24 +1,32 @@
-<div class="mt-10 p-5 w-full mx-auto sm:w=full shadow border-blue-500 border-t-2 m-2">
-    <div class="flex">
-        <h2 class="text-center font-semibold text-2x text-gray-800 mb-5">User List</h2>
-    </div>
-    <table class="border-collapse border border-slate-500 w-full text-gray-800 mb-5">
-        <thead class="bg-gray-100 text-left">
-        <tr>
-            <th class="border border-slate-300 font-semibold p-2 text-sm font-medium">NAME</th>
-            <th class="border border-slate-300 font-semibold p-2 text-sm font-medium">EMAIL</th>
-            <th class="border border-slate-300 font-semibold p-2 text-sm font-medium">JOINED</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($users as $user)
+<div wire:poll.visible.2s class="mt-10 p-5 mx-auto">
+    <h2 class="text-2xl mb-3">Users List</h2>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <td class="border border-slate-300 p-1 text-sm font-medium">{{ $user->name }}</td>
-                <td class="border border-slate-300 p-1 text-sm font-medium">{{ $user->email }}</td>
-                <td class="border border-slate-300 p-1 text-sm font-medium">{{ $user->created_at }}</td>
+                <th scope="col" class="px-6 py-3">name</th>
+                <th scope="col" class="px-6 py-3"">email</th>
+                <th scope="col" class="px-6 py-3">joined</th>
             </tr>
-        @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @foreach($users as $user)
+                <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                    <th scope="row"
+                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ $user->name }}
+                    </th>
+                    <td class="px-6 py-4">{{ $user->email }}</td>
+                    <td class="px-6 py-4">{{ $user->created_at }}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
     {{ $users->links('vendor.livewire.tailwind') }}
 </div>
+
+
+
+
