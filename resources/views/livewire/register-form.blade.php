@@ -46,9 +46,11 @@
             <span class="text-green-500">Sending ...</span>
         </div>
 
-{{--        <button wire:loading.remove type="submit"--}}
-{{--        <button wire:loading.class.remove="text-white" wire:loading.attr="disabled" type="submit"--}}
-        <button wire:loading.class="bg-blue-500" wire:loading.attr="disabled" type="submit"
+        <button type="button" @click="$dispatch('user-created')" class="block rounded px-4 py-2 bg-teal-500 text-white mt-3 font-semibold hover:bg-teal-600">
+            Reload List
+        </button>
+
+        <button wire:loading.class.remove="bg-blue-500" wire:loading.attr="disabled" type="submit"
             class="block rounded px-4 py-2 bg-teal-500 text-white mt-3 font-semibold hover:bg-teal-600">Create +</button>
     </form>
 </div>

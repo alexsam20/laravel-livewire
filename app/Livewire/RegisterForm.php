@@ -11,21 +11,21 @@ class RegisterForm extends Component
 {
     use WithFileUploads;
 
-    #[Rule('required|min:2|max:50')]
-    public $name = '';
+    #[Rule('required|min:3|max:50')]
+    public $name;
 
-    #[Rule('required|email|unique:users')]
-    public $email = '';
+    #[Rule('required|email|max:255|unique:users')]
+    public $email;
 
-    #[Rule('required|min:6')]
-    public $password = '';
+    #[Rule('required|min:3')]
+    public $password;
 
     #[Rule('nullable|sometimes|image|max:1024')]
-    public $image = '';
+    public $image;
 
     public function create()
     {
-//        sleep(2);
+        sleep(1);
 
         $validated = $this->validate();
 
@@ -33,12 +33,20 @@ class RegisterForm extends Component
             $validated['image'] = $this->image->store('uploads', 'public');
         }
 
-        User::create($validated);
+        $user = User::create($validated);
 
         $this->reset(['name', 'email', 'password', 'image']);
 
         session()->flash('success', 'User Created!');
+
+        $this->dispatch('user-created', $user);
     }
+
+    public function ReloadList()
+    {
+        $this->dispatch('user-created');
+    }
+
     public function render()
     {
         return view('livewire.register-form');
