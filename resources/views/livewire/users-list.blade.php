@@ -1,4 +1,4 @@
-<div wire:poll.visible.2s class="mt-10 p-5 mx-auto">
+<div wire:poll class="mt-10 p-5 mx-auto">
     <h2 class="text-2xl mb-3">Users List</h2>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
@@ -6,7 +6,7 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">name</th>
-                <th scope="col" class="px-6 py-3"">email</th>
+                <th scope="col" class="px-6 py-3">email</th>
                 <th scope="col" class="px-6 py-3">joined</th>
             </tr>
             </thead>
@@ -24,7 +24,9 @@
             </tbody>
         </table>
     </div>
-    {{ $users->links('vendor.livewire.tailwind') }}
+    @if(!empty($users))
+        {{ $users->links('vendor.livewire.tailwind') }}
+    @endif
 </div>
 
 

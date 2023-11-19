@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+{{--<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">--}}
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,12 +14,11 @@
     </head>
     <body class="antialiased">
         <div class="flex">
-            <div class="w-full">
-                @livewire('users-list')
+            <div class="w-2/4 mx-auto pt-10">
+{{--                @livewire('users-list', ['lazy' => true])--}}
+
+                <livewire:users-list lazy />
             </div>
-{{--            <div class="w-2/4">--}}
-{{--                @livewire('register-form')--}}
-{{--            </div>--}}
         </div>
     </body>
 </html>
