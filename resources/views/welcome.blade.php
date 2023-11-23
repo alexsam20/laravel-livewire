@@ -16,8 +16,10 @@
         <div class="flex">
             <div class="w-2/4 mx-auto pt-10">
 {{--                @livewire('users-list', ['lazy' => true])--}}
-
-                <livewire:users-list lazy />
+{{--                <livewire:users-list lazy />--}}
+{{--                @livewire('users-list', ['search' => 'prof'])--}}
+{{--                <livewire:users-list :search="date('Y')" />--}}
+                <livewire:users-list search="prof" />
             </div>
         </div>
     </body>
